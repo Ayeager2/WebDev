@@ -1,0 +1,60 @@
+body {
+  background-color: #22223b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Dosis", Dosis;
+  color: black;
+}
+.content {
+  padding: 50px;
+}
+.question {
+  font-size: 40px;
+}
+.answer {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+.container {
+  width: 600px;
+  height: 500px;
+  background-color: whitesmoke;
+  position: relative;
+  border-radius: 20px;
+}
+.game {
+  /* display: none; */
+}
+.submit {
+  background-color: rebeccapurple;
+  color: whitesmoke;
+  border: none;
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+}
+.result {
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+.result h1 {
+  font-size: 50px;
+}
+.correct {
+  color: green;
+}
+.wrong {
+  color: red;
+}
+.play {
+  color: whitesmoke;
+  background-color: rebeccapurple;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+}
