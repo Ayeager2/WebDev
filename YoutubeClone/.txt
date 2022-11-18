@@ -1,0 +1,2 @@
+styled css intellisense extension(ngl i love how its someone applying nail polish as the img)
+https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components
