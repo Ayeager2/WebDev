@@ -17,12 +17,13 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
-  background-color:#202020;
+  background-color:${({ theme }) => theme.bg};
   height:100vh; 
-  color:white; 
+  color:${({ theme }) => theme.text}; 
   font-size: 14px; 
   position:sticky;
   top: 0;
@@ -46,12 +47,15 @@ const Item = styled.div`
   align-items: center;
   gap: 20px;
   cursor: pointer;
+  padding: 7.5px 0px
 `
 const Hr = styled.hr`
   margin: 15px 0px;
-  border: 0.5px solid ${({ theme }) => theme.soft};
+  border: 0.5px solid ${({ theme }) => theme.soft} ;
 `;
+
 const Login = styled.div``;
+
 const Button = styled.button`
   padding: 5px 15px;
   background-color: transparent;
@@ -72,13 +76,16 @@ const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-export const Menu = () => {
+export const Menu = ({ darkMode, setDarkMode }) => {
   return (
     <Container>
       <Wrapper>
-        <Logo>
-          <Img src={ NinnyTube } />NinnyTube
-        </Logo>
+        <Link to="/" style={ { textDecoration: "none", color: "inherit" } }>
+          <Logo>
+            <Img src={ NinnyTube } />
+            NinnyTube
+          </Logo>
+        </Link>
         <Item>
           <HomeIcon />
           Home
@@ -109,7 +116,7 @@ export const Menu = () => {
           </Button>
         </Login>
         <Hr />
-        <Title>BEST OF LAMATUBE</Title>
+        <Title>BEST OF NINNYTUBE</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
           Music
@@ -147,8 +154,9 @@ export const Menu = () => {
           <HelpOutlineOutlinedIcon />
           Help
         </Item>
-        <Item>
+        <Item onClick={ () => setDarkMode(!darkMode) }>
           <SettingsBrightnessOutlinedIcon />
+          { darkMode ? "Light" : "Dark" } Mode
         </Item>
       </Wrapper>
     </Container>);
