@@ -27,10 +27,12 @@ const Container = styled.div`
   font-size: 14px; 
   position:sticky;
   top: 0;
-`
-
+`;
 const Wrapper = styled.div`
-  padding: 18px 26px;  
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar { width: 0 !important }
 `
 const Logo = styled.div`
   display:flex;
@@ -47,8 +49,11 @@ const Item = styled.div`
   align-items: center;
   gap: 20px;
   cursor: pointer;
-  padding: 7.5px 0px
-`
+  padding: 7.5px 0px;
+  &:hover{
+  background-color:${({ theme }) => theme.soft};
+}
+`;
 const Hr = styled.hr`
   margin: 15px 0px;
   border: 0.5px solid ${({ theme }) => theme.soft} ;
@@ -110,10 +115,12 @@ export const Menu = ({ darkMode, setDarkMode }) => {
         <Login>
           Sign in to like videos, comment, and subscribe.
           <Hr />
-          <Button>
-            <AccountCircleOutlinedIcon />
-            SIGN IN
-          </Button>
+          <Link to="signin" style={ { textDecoration: "none" } }>
+            <Button>
+              <AccountCircleOutlinedIcon />
+              SIGN IN
+            </Button>
+          </Link>
         </Login>
         <Hr />
         <Title>BEST OF NINNYTUBE</Title>

@@ -46,6 +46,7 @@ const Button = styled.div`
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  
 `;
 
 const Hr = styled.hr`
@@ -114,10 +115,9 @@ const Video = () => {
             height="720"
             src="https://www.youtube.com/embed/vLfZxMV4H78"
             title="YouTube video player"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-
+            allowFullScreen>
           </iframe>
         </VideoWrapper>
         <Title>Test Video</Title>

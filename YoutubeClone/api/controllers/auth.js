@@ -1,10 +1,10 @@
-import mongoose from 'mongoose'
-import User from '../models/User.js'
+import mongoose from "mongoose";
+import User from "../models/User.js";
 
-export const signup = async(req, res) => {
-    try{
-const newUser = new User();
-    }catch(err){
-        //TODO
-    }
-}
+export const signup = async (req, res) => {
+  // try {
+  //   const newUser = new User(req.body);
+  // } catch (err) {
+  //   //TODO
+  // }
+};

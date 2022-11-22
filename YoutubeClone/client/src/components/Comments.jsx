@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import Comment from "./Comment";
+
 const Container = styled.div``;
 
 const NewComment = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  
 `;
 
 const Avatar = styled.img`
@@ -23,6 +25,10 @@ const Input = styled.input`
   outline: none;
   padding: 5px;
   width: 100%;
+    &:hover{
+  background-color:${({ theme }) => theme.soft};
+}
+
 `;
 
 const Comments = () => {
