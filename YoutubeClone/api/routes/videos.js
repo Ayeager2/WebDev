@@ -24,5 +24,4 @@ router.get("/sub", verifyToken, sub);
 router.get("/tags", getByTag);
 router.get("/search", search);
 
-
-export default router;export default router;
+export default router;
