@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {format} from "timeago.js";
+import axios from "axios";
 
 const Container = styled.div`
   width: ${(props) => props.type === "sm" && "360px"};
@@ -52,17 +54,27 @@ font-size: 14px;
 color: ${({ theme }) => theme.textSoft};
 `;
 
-const Card = ({ type }) => {
+const Card = ({ type, video }) => {
+  const [channel, setChannel] = useState({});
+
+  useEffect(() => {
+    const fetchChannel = async () => {
+      const res = await axios.get(`/users/find/${video.userId}`);
+      setChannel(res.data);
+    };
+    fetchChannel();
+  }, [video.userId]);
+
   return (
     <Link to="/video/test" style={ { textDecoration: "none" } }>
       <Container type={ type }>
-        <Image type={ type } src="https://images.gog-statics.com/239f94729f55602322cf6489798c57bed482b84ea7e253bb3bf716328619878a.jpg" />
+        <Image type={ type } src={video.imgUrl} />
         <Details type={ type }>
-          <ChannelImage type={ type } src="https://art.ngfiles.com/thumbnails/234000/234001_full.jpg?f1552343482" />
+          <ChannelImage type={ type } src={channel.img}/>
           <Texts>
-            <Title>Test Video</Title>
-            <ChannelName>NinnyOfDez Channel</ChannelName>
-            <Info>1M views • 2 years ago</Info>
+            <Title>{video.title}</Title>
+            <ChannelName>{channel.name}</ChannelName>
+            <Info>{video.views} views • {format(video.createdAt)}</Info>
           </Texts>
         </Details>
       </Container>
