@@ -72,7 +72,6 @@ background-color: #999;
   `
 const Navbar = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
-
   return (
     <Container>
       <Wrapper>
@@ -80,12 +79,16 @@ const Navbar = () => {
           <Input placeholder="Search" />
           <SearchOutlinedIcon />
         </Search>
-        { currentUser ? <User><VideoCallOutlinedIcon /><Avatar src={ currentUser.img } />{ currentUser.name }</User> : <Link to="signin" style={ { textDecoration: "none" } }>
-          <Button>
-            <AccountCircleOutlinedIcon />
-            SIGN IN
-          </Button>
-        </Link> }
+        { currentUser ?
+          <User>
+            <VideoCallOutlinedIcon />
+            <Avatar
+              src={ currentUser.img } />{ currentUser.name }</User> : <Link to="signin" style={ { textDecoration: "none" } }>
+            <Button>
+              <AccountCircleOutlinedIcon />
+              SIGN IN
+            </Button>
+          </Link> }
       </Wrapper>
     </Container>
   );
