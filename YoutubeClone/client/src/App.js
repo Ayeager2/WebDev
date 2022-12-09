@@ -7,6 +7,7 @@ import Navbar from "./components/NavBar";
 import Home from "./pages/Home";
 import Video from "./pages/Video";
 import Signin from "./pages/Signin";
+import Search from "./pages/Search";
 
 const Container = styled.div`
   display: flex;
@@ -33,9 +34,14 @@ function App() {
             <Wrapper>
               <Routes>
                 <Route path="/">
-                  <Route index element={<Home type="random"/>} />
-                  <Route index path="trends" element={<Home type="trend"/>} />
-                  <Route index path="subscriptions" element={<Home type="sub"/>} />
+                  <Route index element={<Home type="random" />} />
+                  <Route index path="trends" element={<Home type="trend" />} />
+                  <Route
+                    index
+                    path="subscriptions"
+                    element={<Home type="sub" />}
+                  />
+                  <Route index path="search" element={<Search />} />
                   <Route path="signin" index element={<Signin />} />
                   <Route path="video">
                     <Route path=":id" element={<Video />} />

@@ -113,12 +113,16 @@ const Subscribe = styled.button`
   padding: 10px 20px;
   cursor: pointer;
 `;
+const VideoFrame = styled.video`
+min-height: 720px;
+width: 100%;
+object-fit: cover;
+`
 
 const Video = () => {
   const { currentUser } = useSelector((state) => state.user);
   const { currentVideo } = useSelector((state) => state.video);
   const dispatch = useDispatch();
-  console.log(currentUser);
   const videoId = useLocation().pathname.split("/")[2];
 
 
@@ -141,8 +145,10 @@ const Video = () => {
   }, [videoId, dispatch]);
 
   const handleLike = async () => {
-    await axios.put(`/users/like/${currentVideo._id}`);
+    await axios.post(`/users/like/${currentVideo._id}`);
+    console.log(currentVideo._id);
     dispatch(like(currentUser._id));
+    console.log(currentUser._id);
   };
   const handleDislike = async () => {
     await axios.put(`/users/dislike/${currentVideo._id}`);
@@ -155,31 +161,23 @@ const Video = () => {
       : await axios.put(`/users/sub/${channel._id}`);
     dispatch(subscription(channel._id));
   };
+
   return (
     <Container>
       <Content>
         <VideoWrapper>
-          <iframe
-            width="100%"
-            height="720"
-            src="https://www.youtube.com/embed/vLfZxMV4H78"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen>
-          </iframe>
+          <VideoFrame src={ currentVideo.videoUrl } />
         </VideoWrapper>
         <Title>{ currentVideo.title }</Title>
         <Details>
           <Info>{ currentVideo.views } views • { format(currentVideo.createdAt) }</Info>
           <Buttons>
             <Button onClick={ handleLike }>
-              { currentVideo.likes?.includes(currentUser._id) ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon /> }
-              { currentVideo.likes?.length }
+              { currentVideo.likes?.includes(currentUser._id) ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon /> }  { currentVideo.likes?.length }
             </Button>
             <Button onClick={ handleDislike }>
               { currentVideo.likes?.includes(currentUser._id) ? <ThumbDownIcon /> : <ThumbDownOffAltOutlinedIcon /> }
-              { currentVideo.dislikes?.length }
+              Dislike
             </Button>
             <Button>
               <ReplyOutlinedIcon /> Share
@@ -204,26 +202,12 @@ const Video = () => {
               </Description>
             </ChannelDetail>
           </ChannelInfo>
-          <Subscribe>SUBSCRIBE</Subscribe>
+          <Subscribe onClick={ handleSub }>{ currentUser.subscribedUsers?.includes(channel._id) ? "SUBSCRIBED" : "SUBSCRIBE" } </Subscribe>
         </Channel>
         <Hr />
-        <Comments />
+        <Comments videoId={ currentVideo._id } />
       </Content>
-      {/* <Recommendation>
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-      </Recommendation> */}
+      <Recommendation tags={ currentVideo.tags } />
     </Container>
   );
 };
