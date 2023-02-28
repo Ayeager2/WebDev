@@ -1,0 +1,4 @@
+https://angrytools.com/gradient/ -- multiple tools to check out
+https://animista.net/ -- CSS animations
+
+//using BEM -> Block Element Modifier
