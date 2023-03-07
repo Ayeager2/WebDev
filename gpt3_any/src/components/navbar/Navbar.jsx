@@ -21,6 +21,9 @@ const Navbar = () => {
       <p>
         <a href="#blog">Library</a>
       </p>
+      <p>
+        <a href="#game">Pricing</a>
+      </p>
     </>
   );
   return (
