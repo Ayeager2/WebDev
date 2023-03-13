@@ -18,10 +18,10 @@ import{
 }from '@mui/icons-material'
 
 import dataProvider from "@pankod/refine-simple-rest";
-import { MuiInferencer } from "@pankod/refine-inferencer/mui";
+// import { MuiInferencer } from "@pankod/refine-inferencer/mui";
 import routerProvider from "@pankod/refine-react-router-v6";
 import axios, { AxiosRequestConfig } from "axios";
-import { ColorModeContextProvider } from "contexts";
+// import { ColorModeContextProvider } from "contexts";
 import { Title, Sider, Layout, Header } from "components/layout";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
@@ -116,7 +116,7 @@ function App() {
 
   return (
     <>
-      <ColorModeContextProvider>
+      {/* <ColorModeContextProvider> */}
         <CssBaseline />
         <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
         <RefineSnackbarProvider>
@@ -167,7 +167,7 @@ function App() {
             DashboardPage={Home}
           />
         </RefineSnackbarProvider>
-      </ColorModeContextProvider>
+      {/* </ColorModeContextProvider> */}
     </>
   );
 }
