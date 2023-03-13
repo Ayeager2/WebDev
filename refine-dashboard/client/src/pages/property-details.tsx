@@ -59,8 +59,8 @@ const PropertyDetails = () => {
         }
     };
 
-  return (
- <Box
+    return (
+        <Box
             borderRadius="15px"
             padding="20px"
             bgcolor="#FCFCFC"
@@ -81,7 +81,7 @@ const PropertyDetails = () => {
                         src={propertyDetails.photo}
                         alt="property_details-img"
                         height={664}
-                        width="100%"
+                        width="100%"                        
                         style={{ objectFit: "cover", borderRadius: "10px" }}
                         className="property_details-img"
                     />
@@ -306,7 +306,7 @@ const PropertyDetails = () => {
 
                     <Stack>
                         <img
-                            alt='google-map'
+                            alt='google-maps'
                             src="https://serpmedia.org/scigen/images/googlemaps-nyc-standard.png?crc=3787557525"
                             width="100%"
                             height={306}
@@ -325,7 +325,7 @@ const PropertyDetails = () => {
                 </Box>
             </Box>
         </Box>
-  )
-}
+    );
+};
 
-export default PropertyDetails
+export default PropertyDetails;
