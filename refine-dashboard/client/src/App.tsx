@@ -1,22 +1,22 @@
 import React from "react";
 
-import { Refine,  AuthProvider } from "@pankod/refine-core";
+import { Refine, AuthProvider } from "@pankod/refine-core";
 import {
-  notificationProvider,
-  RefineSnackbarProvider,
-  CssBaseline,
-  GlobalStyles,
-  ReadyPage,
-  ErrorComponent,
+    notificationProvider,
+    RefineSnackbarProvider,
+    CssBaseline,
+    GlobalStyles,
+    ReadyPage,
+    ErrorComponent,
 } from "@pankod/refine-mui";
-import{
-  AccountCircleOutlined,
-  ChatBubbleOutline,  
-  PeopleAltOutlined,
-  StarOutlineRounded,
-  VillaOutlined,
-}from '@mui/icons-material'
-
+import {
+    AccountCircleOutlined,
+    ChatBubbleOutline,
+    PeopleAltOutlined,
+    StarOutlineRounded,
+    VillaOutlined,
+} from "@mui/icons-material";
+import PivotTableChartIcon from "@mui/icons-material/PivotTableChart";
 import dataProvider from "@pankod/refine-simple-rest";
 // import { MuiInferencer } from "@pankod/refine-inferencer/mui";
 import routerProvider from "@pankod/refine-react-router-v6";
@@ -26,25 +26,36 @@ import { Title, Sider, Layout, Header } from "components/layout";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
 
-import {AgentProfile, Agents, AllProperties, CreateProperty, EditProperty,MyProfile,PropertyDetails,Home,Login } from 'pages'
+import {
+    AgentProfile,
+    Agents,
+    AllProperties,
+    CreateProperty,
+    EditProperty,
+    MyProfile,
+    PropertyDetails,
+    Home,
+    Login,
+    PivotTable,
+} from "pages";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
-  const token = localStorage.getItem("token");
-  if (request.headers) {
-    request.headers["Authorization"] = `Bearer ${token}`;
-  } else {
-    request.headers = {
-      Authorization: `Bearer ${token}`,
-    };
-  }
+    const token = localStorage.getItem("token");
+    if (request.headers) {
+        request.headers["Authorization"] = `Bearer ${token}`;
+    } else {
+        request.headers = {
+            Authorization: `Bearer ${token}`,
+        };
+    }
 
-  return request;
+    return request;
 });
 
 function App() {
-  const authProvider: AuthProvider = {
- login: async ({ credential }: CredentialResponse) => {
+    const authProvider: AuthProvider = {
+        login: async ({ credential }: CredentialResponse) => {
             const profileObj = credential ? parseJwt(credential) : null;
 
             if (profileObj) {
@@ -58,7 +69,7 @@ function App() {
                             email: profileObj.email,
                             avatar: profileObj.picture,
                         }),
-                    },
+                    }
                 );
 
                 const data = await response.json();
@@ -70,7 +81,7 @@ function App() {
                             ...profileObj,
                             avatar: profileObj.picture,
                             userid: data._id,
-                        }),
+                        })
                     );
                 } else {
                     return Promise.reject();
@@ -81,95 +92,101 @@ function App() {
             return Promise.resolve();
         },
 
-    logout: () => {
-      const token = localStorage.getItem("token");
+        logout: () => {
+            const token = localStorage.getItem("token");
 
-      if (token && typeof window !== "undefined") {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        axios.defaults.headers.common = {};
-        window.google?.accounts.id.revoke(token, () => {
-          return Promise.resolve();
-        });
-      }
+            if (token && typeof window !== "undefined") {
+                localStorage.removeItem("token");
+                localStorage.removeItem("user");
+                axios.defaults.headers.common = {};
+                window.google?.accounts.id.revoke(token, () => {
+                    return Promise.resolve();
+                });
+            }
 
-      return Promise.resolve();
-    },
-    checkError: () => Promise.resolve(),
-    checkAuth: async () => {
-      const token = localStorage.getItem("token");
+            return Promise.resolve();
+        },
+        checkError: () => Promise.resolve(),
+        checkAuth: async () => {
+            const token = localStorage.getItem("token");
 
-      if (token) {
-        return Promise.resolve();
-      }
-      return Promise.reject();
-    },
+            if (token) {
+                return Promise.resolve();
+            }
+            return Promise.reject();
+        },
 
-    getPermissions: () => Promise.resolve(),
-    getUserIdentity: async () => {
-      const user = localStorage.getItem("user");
-      if (user) {
-        return Promise.resolve(JSON.parse(user));
-      }
-    },
-  };
+        getPermissions: () => Promise.resolve(),
+        getUserIdentity: async () => {
+            const user = localStorage.getItem("user");
+            if (user) {
+                return Promise.resolve(JSON.parse(user));
+            }
+        },
+    };
 
-  return (
-    <>
-      {/* <ColorModeContextProvider> */}
-        <CssBaseline />
-        <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
-        <RefineSnackbarProvider>
-          <Refine
-            dataProvider={dataProvider("http://localhost:8080/api/v1")}
-            notificationProvider={notificationProvider}
-            ReadyPage={ReadyPage}
-            catchAll={<ErrorComponent />}
-            resources={[
-              {
-                name: "properties",
-                list: AllProperties,
-                show: PropertyDetails,
-                create: CreateProperty,
-                edit: EditProperty,
-                icon: <VillaOutlined />,
-              },
-                {
-                name: "agents",
-                list: Agents,
-                show:AgentProfile,
-                icon: <PeopleAltOutlined />,
-              },
-                {
-                name: "reviews",
-                list: Home,
-                icon: <StarOutlineRounded />,
-              },
-                {
-                name: "messages",
-                list: Home,
-                icon: <ChatBubbleOutline />,
-              },
-                {
-                name: "my-profile",
-                options:{label: 'My Profile'},
-                list: MyProfile,
-                icon: <AccountCircleOutlined />,
-              },
-            ]}
-            Title={Title}
-            Sider={Sider}
-            Layout={Layout}
-            Header={Header}
-            routerProvider={routerProvider}
-            authProvider={authProvider}
-            LoginPage={Login}
-            DashboardPage={Home}
-          />
-        </RefineSnackbarProvider>
-      {/* </ColorModeContextProvider> */}
-    </>
-  );
+    return (
+        <>
+            {/* <ColorModeContextProvider> */}
+            <CssBaseline />
+            <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+            <RefineSnackbarProvider>
+                <Refine
+                    dataProvider={dataProvider("http://localhost:8080/api/v1")}
+                    notificationProvider={notificationProvider}
+                    ReadyPage={ReadyPage}
+                    catchAll={<ErrorComponent />}
+                    resources={[
+                        {
+                            name: "properties",
+                            list: AllProperties,
+                            show: PropertyDetails,
+                            create: CreateProperty,
+                            edit: EditProperty,
+                            icon: <VillaOutlined />,
+                        },
+                        {
+                            name: "agents",
+                            list: Agents,
+                            show: AgentProfile,
+                            icon: <PeopleAltOutlined />,
+                        },
+                        {
+                            name: "reviews",
+                            list: Home,
+                            icon: <StarOutlineRounded />,
+                        },
+                        {
+                            name: "messages",
+                            list: Home,
+                            icon: <ChatBubbleOutline />,
+                        },
+                        {
+                            name: "my-profile",
+                            options: { label: "My Profile" },
+                            list: MyProfile,
+                            icon: <AccountCircleOutlined />,
+                        },
+                        {
+                            name: "pivot-table",
+                            options: { label: "Pivto Table Example" },
+                            list: PivotTable,
+                            icon: <PivotTableChartIcon />,
+                        },
+                    ]}
+                    Title={Title}
+                    Sider={Sider}
+                    Layout={Layout}
+                    Header={Header}
+                    routerProvider={routerProvider}
+                    authProvider={authProvider}
+                    LoginPage={Login}
+                    DashboardPage={Home}
+                />
+            </RefineSnackbarProvider>
+            {/* </ColorModeContextProvider> */}
+        </>
+    );
 }
 
 export default App;

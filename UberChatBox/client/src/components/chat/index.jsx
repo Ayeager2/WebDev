@@ -15,18 +15,19 @@ const Chat = () => {
     )
 
     return (
-        < div style={ { flexBasis: "100%" }
-        }>
+        <div style={ { flexBasis: "100%" } }>
             <MultiChatSocket { ...chatProps } />
             <MultiChatWindow
                 { ...chatProps }
                 style={ { height: "100vh" } }
                 renderChatHeader={ (chat) => <Header chat={ chat } /> }
                 renderMessageForm={ (props) => {
-                    <StandardMessageForm { ...props } activeChat={ chatProps.chat } />
+                    return (
+                        <StandardMessageForm props={ props } activeChat={ chatProps.chat } />
+                    );
                 } }
             />
-        </div >
+        </div>
     )
 }
 
