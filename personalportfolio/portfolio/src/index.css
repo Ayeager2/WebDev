@@ -129,18 +129,7 @@ img {
     .container {
         max-width: var(--container-width-sm);
     }
-    section {
-        margin-top: 2rem;
-    }
-}
-
-/* ==== Media Queries (Small Devices) ==== */
-
-@media screen and (max-width: 600px) {
-    .container {
-        max-width: var(--container-width-sm);
-    }
-    section {
+    section > h2 {
         margin-top: 2rem;
     }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import "./about.css";
-import ME from "../../assets/me.png";
+import AboutMe from "../../assets/me-about.jpg";
 import { FaAward } from "react-icons/fa";
 import { FiUsers } from "react-icons/fi";
 import { VscFolderLibrary } from "react-icons/vsc";
@@ -13,26 +13,26 @@ const About = () => {
             <div className="container about__container">
                 <div className="about__me">
                     <div className="about__me-image">
-                        <img src={ME} alt="" className="about__me" />
+                        <img src={AboutMe} alt="" />
                     </div>
                 </div>
                 <div className="about__content">
                     <div className="about__cards">
-                        <div className="about__card">
+                        <article className="about__card">
                             <FaAward className="about__icon" />
                             <h5>Experience</h5>
                             <small>2+ Years Working </small>
-                        </div>
-                        <div className="about__card">
+                        </article>
+                        <article className="about__card">
                             <FiUsers className="about__icon" />
                             <h5>Large Company</h5>
-                            <small>With Many Clients</small>
-                        </div>
-                        <div className="about__card">
+                            <small>Complex Project</small>
+                        </article>
+                        <article className="about__card">
                             <VscFolderLibrary className="about__icon" />
-                            <h5>Always Working On</h5>
-                            <small>Many Personal Projects</small>
-                        </div>
+                            <h5>Always Working</h5>
+                            <small>View Projects</small>
+                        </article>
                     </div>
                     <p>
                         Lorem ipsum, dolor sit amet consectetur adipisicing

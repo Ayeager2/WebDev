@@ -23,7 +23,6 @@
     overflow: hidden;
     transform: rotate(10deg);
     transition: var(--transition);
-    background: rgb(5, 38, 33);
 }
 
 .about__me-image:hover {
@@ -38,14 +37,14 @@
     background: var(--color-bg-variant);
     border: 1px solid transparent;
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
     transition: var(--transition);
 }
 
 .about__card:hover {
     background: transparent;
-    border: 1px solid var(--color-primary-varient);
+    border: var(--color-primary-varient);
     cursor: default;
 }
 
@@ -66,21 +65,6 @@
     color: var(--color-light);
 }
 
-/* ==== Media Queries (Small Devices) ==== */
-
-@media screen and (max-width: 600px) {
-    .about__container {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-    .about__me--image {
-        width: 50%;
-        margin: 2rem auto 4rem;
-    }
-    .about__content p {
-        margin: 1rem 0 1.5rem;
-    }
-}
 /* ==== Media Queries (Medium Devices) ==== */
 
 @media screen and (max-width: 1024px) {
@@ -97,5 +81,25 @@
     }
     .about__content p {
         margin: 1.5rem o;
+    }
+}
+
+/* ==== Media Queries (Small Devices) ==== */
+
+@media screen and (max-width: 600px) {
+    .about__me {
+        width: 65%;
+        margin: 0 auto 3rem;
+    }
+    .about__container {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .about__content p {
+        margin: 1rem 0 1.5rem;
+    }
+    .about__content p {
+        margin: 1.5rem 0;
     }
 }
