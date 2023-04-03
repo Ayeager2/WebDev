@@ -167,6 +167,12 @@ function App() {
                             list: MyProfile,
                             icon: <AccountCircleOutlined />,
                         },
+                        {
+                            name: "pivot-table",
+                            options: { label: "Pivto Table Example" },
+                            list: PivotTable,
+                            icon: <PivotTableChartIcon />,
+                        },
                     ]}
                     Title={Title}
                     Sider={Sider}
