@@ -1,5 +1,6 @@
 {
-    "name": "portfolio",
+    "name": "portfoliov2",
+    "homepage": "https://idobecoding.com",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
