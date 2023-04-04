@@ -27,6 +27,7 @@ header {
     position: absolute;
     left: 0;
     bottom: 3rem;
+    font-size: xx-large;
 }
 
 .header__socials::after {
@@ -34,6 +35,18 @@ header {
     width: 1px;
     height: 2rem;
     background: var(--color-primary);
+}
+.midjourneyIcon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 95%;
+    background: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 /* ==== Me ==== */
