@@ -96,6 +96,8 @@ header {
     }
 }
 
+/* ==== Media Queries (max-height section) ==== */
+
 @media screen and (max-height: 820px) {
     header {
         height: 114vh;
