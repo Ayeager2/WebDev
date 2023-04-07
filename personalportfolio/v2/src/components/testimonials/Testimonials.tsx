@@ -18,24 +18,24 @@ import avatar4 from "../../assets/avatar4.jpg";
 
 const data = [
     {
-        avatar: avatar1,
-        name: "Jane Doe",
-        review: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum reiciendis suscipit optio!",
-    },
-    {
-        avatar: avatar2,
-        name: "John Doe",
-        review: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum reiciendis suscipit optio!",
-    },
-    {
         avatar: avatar3,
-        name: "Bob Doe",
-        review: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum reiciendis suscipit optio!",
+        name: "Loki Madcat",
+        review: "Anna Human is always willing to lend a helping paw. They are the cat's whiskers when it comes to teamwork. Meowtstanding!",
     },
     {
         avatar: avatar4,
-        name: "Lyann Doe",
-        review: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum reiciendis suscipit optio!",
+        name: "Dez Ladypaw",
+        review: "I am pleased to report that this human is an excellent team player, always sharing treats and toys with the rest of us. She is also very attentive to our needs, ensuring that we have enough water and plenty of nap spots. Highly recommend!",
+    },
+    {
+        avatar: avatar1,
+        name: "Destruction DezDez",
+        review: "This human is the cat's meow when it comes to problem-solving. They always find a way to land on their feet and get the job done. Pawsitively impressive!",
+    },
+    {
+        avatar: avatar2,
+        name: "Noodles Henry",
+        review: "Friendly one who smells amazing is a barking-mad genius! They have an un-dog-gable work ethic and always chase their goals with gusto. Their dedication and teamwork is something to bark about!",
     },
 ];
 const Testimonials = () => {

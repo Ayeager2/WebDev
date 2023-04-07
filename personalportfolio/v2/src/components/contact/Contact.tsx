@@ -18,7 +18,7 @@ const data = [
         icon: <BiMessageAltDots className="contact__option-icon" />,
         title: "Message",
         text: "Linked In",
-        link: "mailto:ayeager@gmail.com",
+        link: "https://www.linkedin.com/messaging/compose/?recipient=annanyeager",
         linkMessage: "Notify Me",
     },
 ];
