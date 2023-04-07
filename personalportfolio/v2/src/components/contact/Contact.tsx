@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./contact.css";
 import { HiOutlineMail } from "react-icons/hi";
 import { BiMessageAltDots } from "react-icons/bi";
 import emailjs from "emailjs-com";
+
 const data = [
     {
         id: 1,
@@ -23,26 +24,32 @@ const data = [
 ];
 
 const contact = () => {
-    const form = useRef("");
-    const sendEmail = (e) => {
+    const formRef = useRef<HTMLFormElement | null>(null);
+
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        emailjs
-            .sendForm(
-                "YOUR_SERVICE_ID",
-                "YOUR_TEMPLATE_ID",
-                form.current,
-                "YOUR_PUBLIC_KEY"
-            )
-            .then(
-                (result) => {
-                    console.log(result.text);
-                },
-                (error) => {
-                    console.log(error.text);
-                }
-            );
+        if (formRef.current) {
+            emailjs
+                .sendForm(
+                    "service_o7spa27",
+                    "template_8g7zv3w",
+                    formRef.current,
+                    "JX5hBhM5HDcL6VH6H"
+                )
+                .then(
+                    (result) => {
+                        console.log(result.text);
+                    },
+                    (error) => {
+                        console.log(error.text);
+                    }
+                );
+        } else {
+            console.log("One or more environment variables is not defined.");
+        }
     };
+
     return (
         <section id="contact">
             <h5>Get In Touch</h5>
@@ -64,7 +71,7 @@ const contact = () => {
                     )}
                 </div>
                 {/* END OF CONTACT OPTIONS */}
-                <form ref={form} onSubmit={sendEmail}>
+                <form ref={formRef} onSubmit={sendEmail}>
                     <input
                         type="text"
                         name="name"
